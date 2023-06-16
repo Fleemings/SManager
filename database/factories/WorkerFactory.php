@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\Worker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,6 +20,7 @@ class WorkerFactory extends Factory
             'last_name' => $this->faker->lastName(),
             'job_title' => $this->faker->jobTitle(),
             'email' => $this->faker->unique()->safeEmail(),
+            'user_id' => User::factory()
         ];
     }
 }
