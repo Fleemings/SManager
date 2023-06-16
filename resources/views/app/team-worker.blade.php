@@ -74,8 +74,8 @@
             <div class="flex flex-col items-center mt-4">
                 <!-- Help text -->
                 <?php
-                    $firstItem = $workers->firstItem() ?: '0';
-                    $lastItem = $workers->lastItem() ?: '0';
+                    $firstItem = $workers->firstItem() ? : '0';
+                    $lastItem = $workers->lastItem() ? : '0';
                 ?>
 
                 <span class="text-sm text-gray-700 dark:text-gray-400">

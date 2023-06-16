@@ -114,9 +114,10 @@ class TeamController extends Controller
     }
 
 
+
     /**
-     * Show the form for editing team.
-     */
+         * Show the form for editing team.
+         */
     public function edit($id)
     {
         $team = Team::findOrFail($id);
@@ -145,6 +146,6 @@ class TeamController extends Controller
     public function destroy($id)
     {
         Team::findOrFail($id)->delete();
-        return redirect()->back()->withInput();
+        return redirect()->route('team.index');
     }
 }

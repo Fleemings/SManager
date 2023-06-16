@@ -62,19 +62,23 @@ class WorkerController extends Controller
     public function showTeam($id)
     {
         $team = Team::findOrFail($id);
-        $worker = $team->workers;
-        return view('app.team-worker', compact('team', 'worker'));
+        $workers = $team->workers()->paginate(5);
+        return view('app.team-worker', compact('team', 'workers'));
 
     }
 
     /**
      * Remove the specified worker from a team.
      */
-    public function destroy($workerId, $teamId)
-    {
-        $worker = Worker::findOrFail($workerId);
-        $worker->teams()->detach($teamId);
-        return redirect()->route('worker.showTeam', ['id' => $workerId->id, 'id' => $teamId->id])->withInput();
-    }
+
+     public function destroy($workerId, $teamId)
+     {
+         $worker = Worker::findOrFail($workerId);
+         $worker->teams()->detach($teamId);
+         return redirect()->route('worker.showTeam', ['id' => $teamId]);
+     }
+
+
+
 
 }
