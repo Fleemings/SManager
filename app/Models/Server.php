@@ -18,6 +18,7 @@ class Server extends Model
         'ip'
     ];
 
+
     public function teams(): BelongsToMany
     {
         return $this->belongsToMany(Team::class);

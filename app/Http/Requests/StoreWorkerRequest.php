@@ -22,7 +22,28 @@ class StoreWorkerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'first_name' => [
+                'required',
+                'string'
+            ],
+            'last_name' => [
+                'string'
+            ],
+            'job_title' => [
+                'string'
+            ],
+            'email' => [
+                'required',
+                'email',
+                'unique:workers',
+            ]
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => ':attribute is required'
         ];
     }
 }

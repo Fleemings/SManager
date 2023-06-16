@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class StoreTeamRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreTeamRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,16 @@ class StoreTeamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'team_name' => 'required|unique:teams,team_name',
+            'description' => 'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'required' => ':attribute is required'
+        ];
+    }
+
 }

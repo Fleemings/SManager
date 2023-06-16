@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Server;
 use App\Models\Team;
+use App\Models\User;
 use App\Models\Worker;
 use Illuminate\Database\Seeder;
 
@@ -16,7 +17,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $workers = Worker::factory()->count(10)->create();
+        $workers = Worker::factory()->count(10)->create()->each(function ($worker) {
+            $worker->user()->associate(User::factory()->create()->save());
+        });
 
         $teams = Team::factory()->count(5)->create();
 
