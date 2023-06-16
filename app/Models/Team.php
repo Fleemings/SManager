@@ -18,9 +18,9 @@ class Team extends Model
         'description',
     ];
 
-    public function workers(): HasMany
+    public function workers(): BelongsToMany
     {
-        return $this->hasMany(Worker::class);
+        return $this->belongsToMany(Worker::class);
     }
 
     public function servers(): BelongsToMany
