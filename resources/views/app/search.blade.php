@@ -73,7 +73,7 @@
                     <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4 whitespace-normal dark:text-gray-100 hover:bg-gray-600 transition-all">
                             <a href="{{ route('search.showOneTeam', ['teamId' => $team->id]) }}">
-                                {{ $team->team_name }}
+                                {{ $team->name }}
                             </a>
                         </td>
                     </tr>
@@ -122,7 +122,7 @@
                     <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4 whitespace-normal dark:text-gray-100 hover:bg-gray-600 transition-all">
                             <a href="{{ route('search.showOneServer', ['serverId' => $server->id])}}">
-                                {{ $server->server_name }}
+                                {{ $server->name }}
                             </a>
                         </td>
                     </tr>

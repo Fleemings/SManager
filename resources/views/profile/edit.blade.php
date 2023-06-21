@@ -8,19 +8,19 @@
     <div class="w-4/5 mx-auto sm:px-6 lg:px-8 space-y-6 mb-4">
         <div class="p-4 sm:p-8 dark:bg-gray-800 shadow rounded-lg">
             <div>
-                @include('profile.partials.update-profile-information-form')
+                @include('profile.partials.update_profile_information_form')
             </div>
         </div>
 
         <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
             <div>
-                @include('profile.partials.update-password-form')
+                @include('profile.partials.update_password_form')
             </div>
         </div>
 
         <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
             <div>
-                @include('profile.partials.delete-user-form')
+                @include('profile.partials.delete_user_form')
             </div>
         </div>
     </div>

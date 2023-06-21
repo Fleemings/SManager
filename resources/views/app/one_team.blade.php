@@ -25,7 +25,7 @@
                 <tbody class="bg-white divide-y divide-gray-200">
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap hover:bg-gray-50">
-                            {{ $team->team_name }}
+                            {{ $team->name }}
                         </td>
                         <td class="px-6 py-4 whitespace-normal hover:bg-gray-50">
                             {{ $team->description }}

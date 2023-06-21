@@ -11,11 +11,11 @@
             @method('patch')
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
-                    <label for="team_name" class="block mb-2 text-sm font-medium">
+                    <label for="name" class="block mb-2 text-sm font-medium">
                         Team name
-                        <input id="team_name" name="team_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" type="text" placeholder="Type team name" value="{{ $team->team_name }}" />
+                        <input id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" type="text" placeholder="Type team name" value="{{ $team->name }}" />
                     </label>
-                    @error('team_name')
+                    @error('name')
                     <span class="text-sm text-red-600">{{ $message }}</span>
                     @enderror
                 </div>

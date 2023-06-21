@@ -22,7 +22,7 @@ class StoreServerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'server_name' => 'required|unique:servers,server_name',
+            'name' => 'required|unique:servers,name',
             'description' => 'required',
             'ip' => 'required|ip|unique:servers,ip',
         ];

@@ -15,8 +15,8 @@ class ServerController extends Controller
      */
     public function index(): View
     {
-        $getAllServer = Server::paginate(5);
-        return view('app.server', compact('getAllServer'));
+        $servers = Server::paginate(5);
+        return view('app.server', compact('servers'));
     }
 
     /**
@@ -24,7 +24,7 @@ class ServerController extends Controller
      */
     public function create(): View
     {
-        return view('forms.form-create-server');
+        return view('forms.new_server');
     }
 
     /**
@@ -48,7 +48,7 @@ class ServerController extends Controller
         $server = Server::findOrFail($serverId);
         $teams = $server->teams()->paginate(5);
 
-        return view('app.server-team', compact('server', 'teams'));
+        return view('app.server_team', compact('server', 'teams'));
     }
 
     /**
@@ -57,7 +57,7 @@ class ServerController extends Controller
     public function edit($id): View
     {
         $server = Server::findOrFail($id);
-        return view('forms.form-edit-server', compact('server'));
+        return view('forms.edit_server', compact('server'));
     }
 
     /**
@@ -68,7 +68,7 @@ class ServerController extends Controller
         $oneServerId = Server::findOrFail($id);
 
         $oneServerValidation = $request->validate([
-            'server_name' => 'required',
+            'name' => 'required',
             'description' => 'required',
             'ip' => 'required'
         ]);

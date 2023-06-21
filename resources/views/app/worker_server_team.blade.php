@@ -33,12 +33,12 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap hover:bg-gray-50 text-sm">
                             @foreach ($teams as $team)
-                            {{ $team->team_name }}<br>
+                            {{ $team->name }}<br>
                             @endforeach
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap hover:bg-gray-50 text-sm">
                             @foreach ($servers as $server)
-                            {{ $server->server_name }}<br>
+                            {{ $server->name }}<br>
                             @endforeach
                         </td>
                     </tr>

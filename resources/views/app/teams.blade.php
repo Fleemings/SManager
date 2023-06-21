@@ -26,11 +26,11 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($getAllTeam as $team)
+                    @foreach ($teams as $team)
                     <tr>
                         <td class="px-2 py-2 whitespace-nowrap hover:bg-gray-50 text-sm">
                             <a href="{{ route('team.show', $team->id) }}">
-                                {{ $team->team_name }}
+                                {{ $team->name }}
                             </a>
                         </td>
                         <td class="px-2 py-2 whitespace-normal hover:bg-gray-50 text-sm">
@@ -59,21 +59,21 @@
             <div class="flex flex-col items-center mt-4">
                 <!-- Help text -->
                 <?php
-                    $firstItem = $getAllTeam->firstItem() ? : '0';
-                    $lastItem = $getAllTeam->lastItem() ?  : '0';
+                    $firstItem = $teams->firstItem() ? : '0';
+                    $lastItem = $teams->lastItem() ?  : '0';
                 ?>
                 <span class="text-sm text-gray-700 dark:text-gray-400">
-                    Showing <span class="font-semibold text-gray-900">{{ $firstItem }}</span> to <span class="font-semibold text-gray-900 ">{{ $lastItem }}</span> of <span class="font-semibold text-gray-900">{{ $getAllTeam->total()}}</span> Entries
+                    Showing <span class="font-semibold text-gray-900">{{ $firstItem }}</span> to <span class="font-semibold text-gray-900 ">{{ $lastItem }}</span> of <span class="font-semibold text-gray-900">{{ $teams->total()}}</span> Entries
                 </span>
                 <!-- Buttons -->
                 <div class="inline-flex mt-2 xs:mt-0">
-                    @if ($getAllTeam->previousPageUrl())
-                    <a href="{{ $getAllTeam->previousPageUrl()}}" class="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-900  dark:hover:text-white">
+                    @if ($teams->previousPageUrl())
+                    <a href="{{ $teams->previousPageUrl()}}" class="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-900  dark:hover:text-white">
                         Previous
                     </a>
                     @endif
-                    @if ($getAllTeam->nextPageUrl())
-                    <a href="{{ $getAllTeam->nextPageUrl()}}" class="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-900  dark:hover:text-white">
+                    @if ($teams->nextPageUrl())
+                    <a href="{{ $teams->nextPageUrl()}}" class="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-900  dark:hover:text-white">
                         Next
                     </a>
                     @endif

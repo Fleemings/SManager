@@ -31,11 +31,11 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        @foreach ($getAllServer as $server)
+                        @foreach ($servers as $server)
                         <tr>
                             <td class="px-6 py-2 whitespace-nowrap hover:bg-gray-50 text-sm">
                                 <a href="{{ route('server.show', $server->id) }}">
-                                    {{ $server->server_name }}
+                                    {{ $server->name }}
                                 </a>
                             </td>
                             <td class="px-6 py-2 whitespace-normal hover:bg-gray-50 text-sm">
@@ -67,21 +67,21 @@
                 <div class="flex flex-col items-center mt-4">
                     <!-- Help text -->
                     <?php
-                    $firstItem = $getAllServer->firstItem() ?  : '0';
-                    $lastItem = $getAllServer->lastItem() ? : '0';
+                    $firstItem = $servers->firstItem() ?  : '0';
+                    $lastItem = $servers->lastItem() ? : '0';
                     ?>
                     <span class="text-sm text-gray-700 dark:text-gray-400">
-                        Showing <span class="font-semibold text-gray-900">{{ $firstItem}}</span> to <span class="font-semibold text-gray-900 ">{{ $lastItem}}</span> of <span class="font-semibold text-gray-900">{{ $getAllServer->total()}}</span> Entries
+                        Showing <span class="font-semibold text-gray-900">{{ $firstItem}}</span> to <span class="font-semibold text-gray-900 ">{{ $lastItem}}</span> of <span class="font-semibold text-gray-900">{{ $servers->total()}}</span> Entries
                     </span>
                     <!-- Buttons -->
                     <div class="inline-flex mt-2 xs:mt-0">
-                        @if ($getAllServer->previousPageUrl())
-                        <a href="{{ $getAllServer->previousPageUrl()}}" class="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-900  dark:hover:text-white">
+                        @if ($servers->previousPageUrl())
+                        <a href="{{ $servers->previousPageUrl()}}" class="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-900  dark:hover:text-white">
                             Previous
                         </a>
                         @endif
-                        @if ($getAllServer->nextPageUrl())
-                        <a href="{{ $getAllServer->nextPageUrl()}}" class="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-900  dark:hover:text-white">
+                        @if ($servers->nextPageUrl())
+                        <a href="{{ $servers->nextPageUrl()}}" class="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-900  dark:hover:text-white">
                             Next
                         </a>
                         @endif

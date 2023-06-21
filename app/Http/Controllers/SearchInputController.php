@@ -18,9 +18,9 @@ class SearchInputController extends Controller
         $workers = Worker::where('first_name', 'LIKE', "%{$search}%")
         ->paginate($perPage);
 
-        $teams = Team::where('team_name', 'LIKE', "%{$search}%")->paginate($perPage);
+        $teams = Team::where('name', 'LIKE', "%{$search}%")->paginate($perPage);
 
-        $servers = Server::where('server_name', 'LIKE', "%{$search}%")->paginate($perPage);
+        $servers = Server::where('name', 'LIKE', "%{$search}%")->paginate($perPage);
 
 
         return view('app.search', compact('workers', 'teams', 'servers'));
@@ -30,19 +30,19 @@ class SearchInputController extends Controller
     {
         $worker = Worker::findOrFail($id);
 
-        return view('app.one-worker', compact('worker'));
+        return view('app.one_worker', compact('worker'));
     }
 
 
     public function showOneServer($serverId)
     {
         $server = Server::findOrFail($serverId);
-        return view('app.one-server', compact('server'));
+        return view('app.one_server', compact('server'));
     }
 
     public function showOneTeam($teamId)
     {
         $team = Team::findOrFail($teamId);
-        return view('app.one-team', compact('team'));
+        return view('app.one_team', compact('team'));
     }
 }

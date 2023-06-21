@@ -15,7 +15,7 @@ class ServerFactory extends Factory
     public function definition(): array
     {
         return [
-            'server_name' => $this->faker->unique()->company(),
+            'name' => $this->faker->unique()->company(),
             'description' => $this->faker->sentence(),
             'ip' => $this->faker->unique()->ipv4()
         ];

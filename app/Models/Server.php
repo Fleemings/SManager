@@ -13,7 +13,7 @@ class Server extends Model
     protected $table = 'servers';
 
     protected $fillable = [
-        'server_name',
+        'name',
         'description',
         'ip'
     ];
@@ -28,4 +28,7 @@ class Server extends Model
     {
         return $this->belongsToMany(Worker::class);
     }
+
+
+
 }

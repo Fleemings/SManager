@@ -17,9 +17,9 @@ class TeamController extends Controller
      */
     public function index(): View
     {
-        $getAllTeam = Team::paginate(5);
+        $teams = Team::paginate(5);
 
-        return view('app.teams', compact('getAllTeam'));
+        return view('app.teams', compact('teams'));
     }
 
     /**
@@ -28,7 +28,7 @@ class TeamController extends Controller
     public function create($serverId): View
     {
         $server = Server::findOrFail($serverId);
-        return view('forms.form-create-team', compact('server'));
+        return view('forms.new_team_server', compact('server'));
 
     }
 
@@ -38,7 +38,7 @@ class TeamController extends Controller
 
     public function add(): View
     {
-        return view('forms.form-add-team');
+        return view('forms.new_team');
     }
 
     /**
@@ -47,9 +47,9 @@ class TeamController extends Controller
 
     public function insertTeam($serverId): View
     {
-        $getAllTeams = Team::paginate(5);
+        $teams = Team::paginate(5);
         $server = Server::findOrFail($serverId);
-        return view('forms.form-insertTeam-server', compact('getAllTeams', 'server'));
+        return view('forms.add_team', compact('teams', 'server'));
 
     }
 
@@ -75,7 +75,7 @@ class TeamController extends Controller
     public function store(Request $request, $serverId)
     {
         $teamValidated = $request->validate([
-            'team_name' => 'required|unique:teams,team_name',
+            'name' => 'required|unique:teams,name',
             'description' => 'required'
         ]);
 
@@ -110,7 +110,7 @@ class TeamController extends Controller
     {
         $team = Team::findOrFail($id);
         $workers = $team->workers()->paginate(5);
-        return view('app.team-worker', compact('team', 'workers'));
+        return view('app.team_worker', compact('team', 'workers'));
     }
 
 
@@ -121,7 +121,7 @@ class TeamController extends Controller
     public function edit($id)
     {
         $team = Team::findOrFail($id);
-        return view('forms.form-edit-team', compact('team'));
+        return view('forms.edit_team', compact('team'));
     }
 
     /**
@@ -131,7 +131,7 @@ class TeamController extends Controller
     {
         $oneTeamId = Team::findOrFail($id);
         $oneTeamValidation = $request->validate([
-            'team_name' => 'required',
+            'name' => 'required',
             'description' => 'required'
         ]);
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<x-header :breadcrumbs="[['url' => route('team.index'), 'title' => 'Teams'], ['title' => 'Workers list']]" :page-title="'Workers in the team'" />
+<x-header :breadcrumbs="[['url' => route('team.index'), 'title' => 'Teams'], ['title' => 'Users list']]" :page-title="'Users in the team'" />
 
 <div class="col-start-2 col-end-7 row-start-1 row-end-7 justify-center mt-28">
     <div class="flex justify-center">
@@ -21,7 +21,7 @@
                             Last Name
                         </th>
                         <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Job Title
+                            Position
                         </th>
                         <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Email Address

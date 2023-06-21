@@ -65,11 +65,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/worker/create/{teamId}', [WorkerController::class, 'create'])->name('worker.create');
     Route::post('/worker/store/{teamId}', [WorkerController::class, 'store'])->name('worker.store');
     Route::delete('/worker/destroy/{workerId}/{teamId}', [WorkerController::class, 'destroy'])->name('worker.destroy');
-});
 
-// User Profile
+    // User Profile
 
-Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

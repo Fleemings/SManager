@@ -16,8 +16,8 @@ class WorkerController extends Controller
      */
     public function index()
     {
-        $getAllWorker = Worker::paginate(5);
-        return view('app.worker', compact('getAllWorker'));
+        $workers = Worker::paginate(5);
+        return view('app.worker', compact('workers'));
     }
 
     /**
@@ -25,9 +25,9 @@ class WorkerController extends Controller
      */
     public function create($teamId)
     {
-        $getAllWorker = Worker::paginate(5);
+        $workers = Worker::paginate(5);
         $team = Team::findOrFail($teamId);
-        return view('forms.form-create-worker', compact('getAllWorker', 'team'));
+        return view('forms.add_worker', compact('workers', 'team'));
     }
 
     /**
@@ -52,7 +52,7 @@ class WorkerController extends Controller
         $teams = $worker->teams;
         $servers = $worker->servers;
 
-        return view('app.worker-server-team', compact('worker', 'teams', 'servers'));
+        return view('app.worker_server_team', compact('worker', 'teams', 'servers'));
 
     }
 
@@ -63,7 +63,7 @@ class WorkerController extends Controller
     {
         $team = Team::findOrFail($id);
         $workers = $team->workers()->paginate(5);
-        return view('app.team-worker', compact('team', 'workers'));
+        return view('app.team_worker', compact('team', 'workers'));
 
     }
 

@@ -5,7 +5,7 @@
 
 <div class="col-start-2 col-end-7 row-start-1 row-end-7 justify-center mt-28">
     <div class="mx-auto py-3 px-4 flex flex-col leading-3 text-center bg-white rounded-lg shadow w-96">
-        <h2 class="text-4xl font-extrabold dark:text-black">{{ $server->server_name }}</h2>
+        <h2 class="text-4xl font-extrabold dark:text-black">{{ $server->name }}</h2>
         <p class="my-1 text-lg text-gray-500">IP: {{ $server->ip }}</p>
         <p class="mb-1 text-lg font-normal text-gray-500">{{ $server->description }}</p>
     </div>
@@ -41,7 +41,7 @@
                     <tr>
                         <td class="px-6 py-4 hover:bg-gray-50 ">
                             <div class="flex flex-col">
-                                <a href="{{ route('worker.showTeam', $team->id) }}" class="text-gray-900 font-medium text-sm">{{ $team->team_name }}</a>
+                                <a href="{{ route('worker.showTeam', $team->id) }}" class="text-gray-900 font-medium text-sm">{{ $team->name }}</a>
 
                             </div>
                         </td>

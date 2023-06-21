@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         foreach ($workers as $worker) {
             $worker->teams()->attach($teams->random(2)->pluck('id'));
             $worker->servers()->attach($servers->random(2)->pluck('id'));
+
         }
 
         foreach ($teams as $team) {
