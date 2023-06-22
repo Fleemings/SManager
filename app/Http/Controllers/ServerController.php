@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreServerRequest;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ServerController extends Controller
 {
@@ -36,6 +37,7 @@ class ServerController extends Controller
 
         Server::create($serverValidated);
 
+        toast('New server successfully created', 'success');
         return redirect()->route('server.index');
     }
 
@@ -74,7 +76,7 @@ class ServerController extends Controller
         ]);
 
         $oneServerId->update($oneServerValidation);
-
+        toast('Server successfully updated', 'success');
         return redirect()->route('server.index');
     }
 
@@ -84,7 +86,7 @@ class ServerController extends Controller
     public function destroy($id): RedirectResponse
     {
         Server::findOrFail($id)->delete();
-
+        toast('Server successfully removed', 'success');
         return redirect()->route('server.index');
     }
 }

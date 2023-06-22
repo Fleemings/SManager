@@ -14,6 +14,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
 <body class="font-sans antialiased bg-gray-100">
@@ -21,6 +22,8 @@
     @include('layouts.navigation')
 
     <main class="grid grid-cols-6 grid-rows-7">
+
+
 
         <!-- Side menu -->
         <aside id="default-sidebar" class="col-span-1 row-span-full h-screen shadow-md dark:bg-cyan-800" aria-label="Sidebar">
@@ -134,6 +137,8 @@
     </main>
 
     <script src="{{ mix('js/app.js') }}" defer></script>
+
+    @include('sweetalert::alert')
 
 </body>
 

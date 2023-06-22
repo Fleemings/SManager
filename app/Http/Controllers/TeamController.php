@@ -9,6 +9,7 @@ use App\Models\Worker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TeamController extends Controller
 {
@@ -53,8 +54,8 @@ class TeamController extends Controller
 
     }
 
-     /**
-     * store a team from an existent list team
+    /**
+    * store a team from an existent list team
     */
 
     public function saveTeam(Request $request, $serverId)
@@ -63,7 +64,13 @@ class TeamController extends Controller
         $team = Team::findOrFail($teamId);
 
         $server = Server::findOrFail($serverId);
-        $server->teams()->syncWithoutDetaching($team->id);
+
+        if($server->teams()->where('team_id', $teamId)->exists()) {
+            toast('Team already exist in the server', 'warning');
+        } else {
+            $server->teams()->syncWithoutDetaching($team->id);
+            toast('Team successfully added in the server', 'success');
+        }
 
         return redirect()->route('server.show', ['id' => $serverId])->withInput();
     }
@@ -85,7 +92,7 @@ class TeamController extends Controller
 
         $server->teams()->attach($team->id);
 
-
+        toast('Team successfully added in the server', 'success');
         return redirect()->route('server.show', ['id' => $serverId])->withInput();
     }
 
@@ -97,7 +104,7 @@ class TeamController extends Controller
     {
         $teamValidated = $request->validated();
         Team::create($teamValidated);
-
+        toast('Team successfully created', 'success');
         return redirect()->route('team.index');
     }
 
@@ -136,7 +143,7 @@ class TeamController extends Controller
         ]);
 
         $oneTeamId->update($oneTeamValidation);
-
+        toast('Team successfully updated', 'success');
         return redirect()->route('team.index');
     }
 
@@ -146,6 +153,7 @@ class TeamController extends Controller
     public function destroy($id)
     {
         Team::findOrFail($id)->delete();
+        toast('Team successfully deleted', 'success');
         return redirect()->route('team.index');
     }
 }

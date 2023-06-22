@@ -8,6 +8,7 @@ use App\Models\Team;
 use App\Http\Requests\StoreWorkerRequest;
 use App\Http\Requests\UpdateWorkerRequest;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class WorkerController extends Controller
 {
@@ -39,7 +40,7 @@ class WorkerController extends Controller
         $worker = Worker::findOrFail($workerId);
         $team = Team::findOrFail($teamId);
         $team->workers()->syncWithoutDetaching($worker->id);
-
+        toast('User successfully added in the team', 'success');
         return redirect()->route('team.show', ['id' => $teamId])->withInput();
     }
 
@@ -71,12 +72,13 @@ class WorkerController extends Controller
      * Remove the specified worker from a team.
      */
 
-     public function destroy($workerId, $teamId)
-     {
-         $worker = Worker::findOrFail($workerId);
-         $worker->teams()->detach($teamId);
-         return redirect()->route('worker.showTeam', ['id' => $teamId]);
-     }
+    public function destroy($workerId, $teamId)
+    {
+        $worker = Worker::findOrFail($workerId);
+        $worker->teams()->detach($teamId);
+        toast('User removed from team successfully', 'success');
+        return redirect()->route('worker.showTeam', ['id' => $teamId]);
+    }
 
 
 

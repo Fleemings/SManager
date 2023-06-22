@@ -16,7 +16,7 @@
                         <input id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" type="text" placeholder="Type server name" value="{{ $server->name }}" />
                     </label>
                     @error('name')
-                    <span class="text-sm text-red-600">{{ $message }}</span>
+                    <span class="text-sm text-red-600 font-semibold uppercase">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="w-full">
@@ -25,7 +25,7 @@
                         <textarea type="text" name="description" row='4' id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">{{ $server->description }}</textarea>
                     </label>
                     @error('description')
-                    <span class="text-sm text-red-600">{{ $message }}</span>
+                    <span class="text-sm text-red-600 font-semibold uppercase">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="sm:col-span-2">
@@ -34,7 +34,7 @@
                         <input id="ip" name="ip" class="block h-9 p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 " value="{{ $server->ip }}" />
                     </label>
                     @error('ip')
-                    <span class="text-sm text-red-600">{{ $message }}</span>
+                    <span class="text-sm text-red-600 font-semibold uppercase">{{ $message }}</span>
                     @enderror
                 </div>
             </div>

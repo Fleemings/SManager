@@ -16,7 +16,7 @@
                         <input id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" type="text" name="name" placeholder="Type team name" value="{{ old('name') }}" />
                     </label>
                     @error('name')
-                    <span class="text-sm text-red-600">{{ $message }}</span>
+                    <span class="text-sm text-red-600 font-semibold uppercase">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="w-full">
@@ -25,7 +25,7 @@
                         <textarea type="text" name="description" row='4' id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Your description here">{{ old('description') }}</textarea>
                     </label>
                     @error('description')
-                    <span class="text-sm text-red-600">{{ $message }}</span>
+                    <span class="text-sm text-red-600 font-semibold uppercase">{{ $message }}</span>
                     @enderror
                 </div>
             </div>

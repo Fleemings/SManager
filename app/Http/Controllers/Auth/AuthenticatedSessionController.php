@@ -12,7 +12,6 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
-
     public function create(): View
     {
         return view('auth.login');
@@ -23,7 +22,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
+        toast('Login successful!', 'success')->autoClose(3000);
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
