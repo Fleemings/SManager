@@ -100,7 +100,7 @@ class TeamController extends Controller
     * Store a newly created team without a server.
     */
 
-    public function save(StoreTeamRequest $request): RedirectResponse
+    public function save(StoreTeamRequest $request)
     {
         $teamValidated = $request->validated();
         Team::create($teamValidated);

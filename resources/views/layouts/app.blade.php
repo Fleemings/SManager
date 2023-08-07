@@ -26,7 +26,7 @@
 
 
         <!-- Side menu -->
-        <aside id="default-sidebar" class="col-span-1 row-span-full h-screen shadow-md dark:bg-cyan-800" aria-label="Sidebar">
+        <aside id="default-sidebar" class="col-span-1 row-span-full h-screen shadow-md dark:bg-cyan-800 sm:min-h-screen" aria-label="Sidebar">
             <div class="px-3 py-4 overflow-y-auto dark:bg-cyan-800">
                 <h1 class="text-white text-center my-4 font-light text-xl">Dashboard</h1>
                 <ul class="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200">
@@ -132,13 +132,44 @@
         <!-- Page Content -->
 
         @yield('content')
-        {{-- @include('layouts.footer') --}}
+        @include('layouts.footer')
 
     </main>
 
+    @include('sweetalert::alert')
+
     <script src="{{ mix('js/app.js') }}" defer></script>
 
-    @include('sweetalert::alert')
+    <script>
+        const searchInput = document.getElementById('table-search');
+        const searchResults = document.getElementById('search-results');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value;
+            if (query.length >= 3) {
+                axios.get(`/search?search=${query}`)
+                    .then(response => {
+                        const results = response.data;
+
+                        searchResults.innerHTML = '';
+                        results.forEach(result => {
+                            const resultItem = document.createElement('a');
+                            resultItem.href = result.url;
+                            resultItem.textContet = result.title;
+
+                            searchResults.appendChild(resultItem);
+                        });
+
+                    })
+                    .cath(error => {
+                        console.error(error);
+                    })
+            } else {
+                searchResults.innerHTML = '';
+            }
+        })
+
+    </script>
 
 </body>
 

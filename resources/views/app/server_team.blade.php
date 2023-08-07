@@ -52,7 +52,7 @@
                         </td>
                         <td class="px-6 py-4 hover:bg-gray-50 ">
                             <div class="flex flex-col">
-                                <span class="text-gray-900 font-medium text-sm">{{ $team->created_at }}</span>
+                                <span class="text-gray-900 font-medium text-sm">{{ $team->created_at->diffForHumans() }}</span>
                             </div>
                         </td>
                         <td class="flex px-6 py-4 justify-center">

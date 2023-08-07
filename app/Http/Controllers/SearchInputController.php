@@ -22,6 +22,15 @@ class SearchInputController extends Controller
 
         $servers = Server::where('name', 'LIKE', "%{$search}%")->paginate($perPage);
 
+        // $results = [];
+
+        // foreach($workers as $worker) {
+        //     $results[] = [
+        //         'title' => $worker->first_name,
+        //         'url' => route('worker.show', $worker->id),
+        //     ];
+        // }
+
 
         return view('app.search', compact('workers', 'teams', 'servers'));
     }

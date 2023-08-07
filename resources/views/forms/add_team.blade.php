@@ -33,7 +33,7 @@
                             {{ $team->description }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap hover:bg-gray-50 text-sm">
-                            {{ $team->created_at }}
+                            {{ $team->created_at->diffForHumans() }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <form action="{{ route('team.saveTeam', ['serverId' => $server->id]) }}" method="POST">
